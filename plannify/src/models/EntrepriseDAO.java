@@ -1,105 +1,106 @@
 package models;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-
-import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.PreparedStatement;
 
 import beans.Entreprise;
 
 
 public class EntrepriseDAO {
 	
-	public void AddEnterprise(Entreprise E) {
+	public void addEnterprise(Entreprise E) {
 		PreparedStatement ps;
-		String query="insert into entreprises (nom,description) values  (?,?)";
+		String query="insert into entreprises (nom,description) values(?,?)";
 		try {
-			Connection connection= (Connection) Database.getConx();
-			ps=(PreparedStatement) connection.prepareStatement(query);
+			Connection connection = Database.getConx();
+			ps = connection.prepareStatement(query);
 			ps.setString(1, E.getNom());
-			ps.setInt(1, E.getId());
+			ps.setInt(2, E.getId());
 			ps.execute();
 
-		} catch (Exception e) {
-			// TODO: handle exception
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 
 	}
 	
-	public  boolean DeleteEntrepriseId(Entreprise E) {
+	public boolean deleteEntreprise(Entreprise E) {
 		PreparedStatement ps;
 		String query="Delete from entreprises where id=?";
 		try {
-			Connection connection= (Connection) Database.getConx();
-			ps=(PreparedStatement) connection.prepareStatement(query);
+			Connection connection = Database.getConx();
+			ps = connection.prepareStatement(query);
 			ps.setInt(1, E.getId());
 			ps.execute();
-			
+	
 			return true;
-		} catch (Exception e) {
+	
+		} catch (SQLException e) {
 			e.printStackTrace();
 			return false;
 		}
 	}
 	
-	public ArrayList<Entreprise> GetEntrepriseId(int id){
-		ArrayList<Entreprise> entreprise = new ArrayList<Entreprise>();
+	
+	public Entreprise getEntreprise(int id){
+		Entreprise entreprise = null;
 		String query="select * from entreprises where id = "+id;
+	
 		try {
-			Connection connection= (Connection) Database.getConx();
-			Statement st=connection.createStatement();
-			ResultSet rs= st.executeQuery(query);
-			while (rs.next()) {
-				String Nom=rs.getString("nom");
-				String Desc=rs.getString("description");
-				Entreprise E=new Entreprise(Nom, Desc);
-				entreprise.add(E);	
+			Connection connection = Database.getConx();
+			Statement st = connection.createStatement();
+			ResultSet rs = st.executeQuery(query);
+		
+			if(rs.next()) {
+				String Nom = rs.getString("nom");
+				String Desc = rs.getString("description");
+				entreprise = new Entreprise(Nom, Desc);
 			}
-		} catch (Exception e) {
-			// TODO: handle exception
+	
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 		
 		return entreprise;
 		
 	}
 	
-	public ArrayList<Entreprise> GetAllEntreprise(){
-		ArrayList<Entreprise> entreprise = new ArrayList<Entreprise>();
-		String query = "select * from entreprises";
-				try {
-					Connection connection= (Connection) Database.getConx();
-					Statement st=connection.createStatement();
-					ResultSet rs=st.executeQuery(query);
-					while(rs.next()) {
-						String nom=rs.getString("nom");
-						String desc=rs.getString("description");
-						int id= rs.getInt("entreprise_id");
-						Entreprise E =new Entreprise(id, nom, desc);
-						entreprise.add(E);
-						return entreprise;
-						
-					}
-				} catch (Exception e2) {
-					// TODO: handle exception
-				}
-
-				return null ;
-
+	public ArrayList<Entreprise> getAllEntreprise(){
 		
+		ArrayList<Entreprise> entreprises = new ArrayList<Entreprise>();
+		String query = "select * from entreprises";
+		
+		try {
+			Connection connection = Database.getConx();
+			Statement st = connection.createStatement();
+			ResultSet rs = st.executeQuery(query);
+			while(rs.next()) {
+				String nom = rs.getString("nom");
+				String desc = rs.getString("description");
+				int id = rs.getInt("entreprise_id");
+				Entreprise E = new Entreprise(id, nom, desc);
+				entreprises.add(E);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return entreprises ;	
 	} 
 	
 	
-	public void UpdateName(Entreprise E) {
+	public void updateEntreprise(Entreprise E) {
 		String query="UPDATE entreprises SET nom='"+E.getNom()+"',description='"+E.getDescription()+"' WHERE entreprise_id ="+E.getId();
 		try {
-			Connection connection= (Connection) Database.getConx();
-			Statement st=connection.createStatement();
+			Connection connection = Database.getConx();
+			Statement st = connection.createStatement();
 			st.executeUpdate(query);
 			
-		} catch (Exception e) {
-			// TODO: handle exception
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
 		
 		
