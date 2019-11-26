@@ -30,6 +30,4 @@ public class Categorie {
 		return "Categorie [id=" + id + ", nom=" + nom + "]";
 	}
 	
-	
-	
 }

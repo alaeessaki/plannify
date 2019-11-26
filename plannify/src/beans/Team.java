@@ -3,7 +3,7 @@ package beans;
 public class Team {
 	private int id;
 	private String nom;
-	Entreprise entreprise;
+	private Entreprise entreprise;
 	
 	public Team(int id, String nom, Entreprise entreprise) {
 		this.id = id;
