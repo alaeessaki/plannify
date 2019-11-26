@@ -1,14 +1,13 @@
 package models;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import Model.Database;
-import Model.Person;
 import beans.Project;
 
 public class ProjectDAO {
@@ -18,21 +17,35 @@ public class ProjectDAO {
 		
 		ArrayList<Project> projects = new ArrayList<Project>();
 		
-		Connection conn = Database.getConx();
+		Connection con = Database.getConx();
 		try {
-			Statement stm = conn.createStatement();
+			Statement stm = con.createStatement();
 			ResultSet rs = stm.executeQuery("SELECT * FROM projets");
 			
 			while(rs.next()) {
-				Project project = new Project(rs.getInt("projet_id"), rs.getString("nom"), rs.getString("description"), rs.getDate("created_at"), );
-				projects.add(project);
+				int id = rs.getInt("projet_id");
+				String nom = rs.getString("nom");
+				String description = rs.getString("description");
+				Date created_at = rs.getDate("created_at");
+				int team_id = rs.getInt("team_id");
+				int categorie_id = rs.getInt("categorie_id");
+				
+				//instance
+				//TODO projects 
+				
+				
+				
+				return projects;
 			}
+			
+			stm.close();
+			rs.close();
 			
 		}catch(Exception e) {
 			e.printStackTrace();
-			return null;
-			
 		}
+		
+		return null;
 		
 	}
 	
@@ -47,9 +60,14 @@ public class ProjectDAO {
 
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()){
-                Project person = new Project(rs.getInt("projet_id"), rs.getString("nom"),rs.getString("description"),rs.getDate("created_at"),);
-                return person;
+            	
+					
+				//TODO instance project
+                //return project;
             }
+            
+            rs.close();
+            
         }catch (Exception e){
             e.printStackTrace();
         }finally {
@@ -61,12 +79,17 @@ public class ProjectDAO {
     }
 	
 	// add a project ...
-    public void addPerson(Project project){
+    public void addProject(Project project){
         Connection con = Database.getConx();
         try {
-           Statement stm = con.createStatement();
-          
-
+        	String query = "INSERT INTO projets (nom, description, created_at, team_id, categorie_id) VALUES (?, ?, ?, ?, ?);";
+        	Statement stm = con.createStatement();       
+        	PreparedStatement preparedStatement = con.prepareStatement(query);
+        	preparedStatement.setString(1,project.getNom());
+        	preparedStatement.setString(2,project.getDescription());
+        	preparedStatement.setDate(3,(Date) project.getCreated_at());
+        	preparedStatement.setInt(4, project.getTeam().getId());
+        	preparedStatement.setInt(5, project.getCategorie().getId());
  
         }catch (SQLException e){
             e.printStackTrace();
@@ -75,6 +98,19 @@ public class ProjectDAO {
 
     //update project...
     
+    public void updateProject(Project project) {
+    	Connection con = Database.getConx();
+        try{
+        	String query = "UPDATE `projets` SET `projet_id`=,`nom`='"+project.getNom()+"',`description`='"+ project.getDescription() +"',`created_at`='"+project.getCreated_at()+"',`team_id`="+project.getTeam().getId()+",`categorie_id`=" + project.getCategorie().getId() + " WHERE "+ project.getId()+" ";
+        	Statement statement = con.createStatement();
+            statement.executeUpdate(query);
+            
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    	
+    }
+    
     
     //delete project...
     
@@ -82,7 +118,7 @@ public class ProjectDAO {
         Connection con = Database.getConx();
         try {
         	Statement stm = con.createStatement();
-        	String sql = "DELETE FROM projets WHERE id="+id; 
+        	String sql = "DELETE FROM projets WHERE id=" + id; 
         	stm.executeUpdate(sql);
         	
         }catch(SQLException e) {
