@@ -20,13 +20,13 @@ public class RoleDAO {
             ResultSet rs = stmt.executeQuery("SELECT * FROM role");
 
             while (rs.next()){
-            	Role rol = new Role(rs.getInt("role_id"),rs.getString("nom"));
+            	Role rol = new Role(rs.getInt("role_id"),rs.getString("role_name"));
             	rolesList.add(rol);
             }
             stmt.close();
             rs.close();
             return rolesList;
-        }catch (Exception e){
+        }catch (SQLException e){
             e.printStackTrace();
             return null;
         }
@@ -43,7 +43,7 @@ public class RoleDAO {
             ResultSet rs = preparedStatement.executeQuery();
             if (rs.next()){
             	            	
-            	Role rol = new Role(rs.getInt("role_id"),rs.getString("nom"));
+            	Role rol = new Role(rs.getInt("role_id"),rs.getString("role_name"));
                 return rol;
             }
         }catch (Exception e){
@@ -84,7 +84,7 @@ public class RoleDAO {
     	Connection con = Database.getConx();
         try {
             Statement st = con.createStatement();
-            st.executeUpdate("INSERT INTO role(role_id,nom) VALUES('"+rol.getId()+"','"+rol.getNom()+"')");
+            st.executeUpdate("INSERT INTO role(role_id,role_name) VALUES('"+rol.getId()+"','"+rol.getNom()+"')");
 
          }catch (SQLException e){
              e.printStackTrace();
@@ -108,7 +108,7 @@ public class RoleDAO {
     	Connection con = Database.getConx();
         try {
             Statement st = con.createStatement();
-            st.executeUpdate("UPDATE `role` SET `nom`='"+rol.getNom()+"' WHERE role_id="+rol.getId());
+            st.executeUpdate("UPDATE `role` SET `role_name`='"+rol.getNom()+"' WHERE role_id="+rol.getId());
 
          }catch (SQLException e){
              e.printStackTrace();

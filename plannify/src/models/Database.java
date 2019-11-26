@@ -15,12 +15,11 @@ public class Database {
 		}else {
 			try {
 			Class.forName("com.mysql.jdbc.Driver");			
-			String url ="jdbc:mysql://localhost:3306/"+dbname+"??useSSL=false";
+			String url ="jdbc:mysql://localhost/"+dbname+"??useSSL=false";
 			String user="root";
 			String passwd="";
 			
 			connection = DriverManager.getConnection(url,user,passwd);
-			
 			}catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
