@@ -19,7 +19,7 @@ public class EntrepriseDAO {
 			Connection connection= (Connection) Database.getConx();
 			ps=(PreparedStatement) connection.prepareStatement(query);
 			ps.setString(1, E.getNom());
-			ps.setInt(1, E.getId());
+			ps.setInt(2, E.getId());
 			ps.execute();
 
 		} catch (Exception e) {
