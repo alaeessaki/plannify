@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class Connexion {
+public class Database {
 	
 	private static Connection connection;
 	private static String dbname = "suivie_des_bugs";
