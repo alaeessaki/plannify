@@ -35,7 +35,8 @@ public class ProjectDAO {
 				
 				
 				
-				return projects;
+				//Project project = new Project(id, nom, description, created_at, team, categorie);
+				//projects.add(project);
 			}
 			
 			stm.close();
@@ -45,25 +46,32 @@ public class ProjectDAO {
 			e.printStackTrace();
 		}
 		
-		return null;
+		return projects;
 		
 	}
 	
 	// get a project by name ...
 	
-	public Project getProject(String nom){
+	public Project getProject(int id){
         Connection con = Database.getConx();
+        Project project = null;
         try{
             String query = "SELECT * FROM projets WHERE nom=?";
             PreparedStatement preparedStatement = con.prepareStatement(query);
-            preparedStatement.setString(1,nom);
+            preparedStatement.setInt(1,id);
 
             ResultSet rs = preparedStatement.executeQuery();
-            while (rs.next()){
+            if (rs.next()){
+            	String nom = rs.getString("nom");
+				String description = rs.getString("description");
+				Date created_at = rs.getDate("created_at");
+				int team_id = rs.getInt("team_id");
+				int categorie_id = rs.getInt("categorie_id");
             	
 					
 				//TODO instance project
-                //return project;
+				//Project project = new Project(id, nom, description, created_at, team, categorie);
+                
             }
             
             rs.close();
@@ -75,7 +83,7 @@ public class ProjectDAO {
                 Database.disconnect();
             }
         }
-        return null;
+        return project;
     }
 	
 	// add a project ...
