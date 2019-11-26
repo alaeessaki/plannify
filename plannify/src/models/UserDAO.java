@@ -3,7 +3,11 @@ package models;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
 
+import beans.Entreprise;
+import beans.Role;
 import beans.User;
 
 public class UserDAO {
@@ -39,6 +43,42 @@ public class UserDAO {
 	
 	//TODO add createAdminUser using createEntreprise method
 	
+	public ArrayList<User> getAll(){
+		ArrayList<User> users = new ArrayList<User>();
+		Connection connection = null;
+		Statement statement = null;
+		ResultSet resultSet = null;
+		
+		try {
+			connection = Database.getConx();
+			statement = connection.createStatement();
+			resultSet = statement.executeQuery("SELECT * FROM users");
+			
+			while(resultSet.next()) {
+				int id = resultSet.getInt("user_id");
+				String email = resultSet.getString("email");
+				String password = resultSet.getString("password");
+				String nom = resultSet.getString("nom");
+				String prenom = resultSet.getString("prenom");
+				int role_id = resultSet.getInt("role_id");
+				int entreprise_id = resultSet.getInt("entreprise_id");
+				
+				/*
+				 * TODO get role object using RoleDAO
+				 * get entreprise object using entrepriseDAO
+				 * */
+				
+				//User user = new User(id, email, password, nom, prenom, role, entreprise);
+				//users.add(user);
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return users;
+		
+	}
+	
 	public User getUser(int id) {
 		User user = null;
 		Connection connection = null;
@@ -68,6 +108,8 @@ public class UserDAO {
 				 * get entreprise object using EntrepriseDAO
 				 * then create User Object
 				 */
+				
+				//User user = new User(id, email, password, nom, prenom, role, entreprise);
 			}
 			
 		}catch(Exception e) {
