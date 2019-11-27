@@ -63,13 +63,14 @@ public class UserDAO {
 				int role_id = resultSet.getInt("role_id");
 				int entreprise_id = resultSet.getInt("entreprise_id");
 				
-				/*
-				 * TODO get role object using RoleDAO
-				 * get entreprise object using entrepriseDAO
-				 * */
+				RoleDAO roledao = new RoleDAO();
+				Role role = roledao.getRole(role_id);
+				EntrepriseDAO entreprisedao = new EntrepriseDAO();
+				Entreprise entreprise = entreprisedao.getEntreprise(entreprise_id);
 				
-				//User user = new User(id, email, password, nom, prenom, role, entreprise);
-				//users.add(user);
+				
+				User user = new User(id, email, password, nom, prenom, role, entreprise);
+				users.add(user);
 			}
 			
 		}catch(Exception e) {
@@ -103,13 +104,13 @@ public class UserDAO {
 				int role_id = resultSet.getInt("role_id");
 				int entreprise_id = resultSet.getInt("entreprise_id");
 				
-				/*TODO 
-				 * get role Object using RoleDAO
-				 * get entreprise object using EntrepriseDAO
-				 * then create User Object
-				 */
+				RoleDAO roledao = new RoleDAO();
+				Role role = roledao.getRole(role_id);
+				EntrepriseDAO entreprisedao = new EntrepriseDAO();
+				Entreprise entreprise = entreprisedao.getEntreprise(entreprise_id);
 				
-				//User user = new User(id, email, password, nom, prenom, role, entreprise);
+				
+				user = new User(id, email, password, nom, prenom, role, entreprise);
 			}
 			
 		}catch(Exception e) {
@@ -142,11 +143,13 @@ public class UserDAO {
 				int role_id = resultSet.getInt("role_id");
 				int entreprise_id = resultSet.getInt("entreprise_id");
 				
-				/*TODO 
-				 * get role Object using RoleDAO
-				 * get entreprise object using EntrepriseDAO
-				 * then create User Object
-				 */
+				RoleDAO roledao = new RoleDAO();
+				Role role = roledao.getRole(role_id);
+				EntrepriseDAO entreprisedao = new EntrepriseDAO();
+				Entreprise entreprise = entreprisedao.getEntreprise(entreprise_id);
+				
+				
+				user = new User(id, email, password, nom, prenom, role, entreprise);
 			}
 			
 		}catch(Exception e) {

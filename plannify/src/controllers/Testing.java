@@ -10,10 +10,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import beans.Categorie;
+import beans.Entreprise;
+import beans.Project;
 import beans.Role;
+import beans.Team;
+import beans.User;
 import models.CategorieDAO;
 import models.Database;
+import models.EntrepriseDAO;
+import models.ProjectDAO;
 import models.RoleDAO;
+import models.TeamDAO;
+import models.UserDAO;
 
 /**
  * Servlet implementation class Testing
@@ -33,8 +41,32 @@ public class Testing extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RoleDAO roleDAO = new RoleDAO();
-		ArrayList<Role> roles = new ArrayList<Role>();
+		
+		
+		ArrayList<Team> teams = new ArrayList<Team>();
+		ArrayList<Project> projects = new ArrayList<Project>();
+		ArrayList<User> users = new ArrayList<User>();
+		
+		TeamDAO tdao = new TeamDAO();
+		RoleDAO rdao = new RoleDAO();
+		EntrepriseDAO edao = new EntrepriseDAO();
+		ProjectDAO pdao = new ProjectDAO();
+		UserDAO udao = new UserDAO();
+		
+		teams = tdao.getAll();
+		projects = pdao.getAllProjects();
+		users = udao.getAll();
+	
+		
+		System.out.println(udao.getUser(1));
+		
+		System.out.println("**********************");
+		
+		for(int i = 0; i < users.size(); i++) {
+			System.out.println(users.get(i));
+		}
+		
+			
 	
 	}	
 

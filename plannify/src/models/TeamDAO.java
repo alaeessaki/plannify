@@ -22,8 +22,8 @@ public class TeamDAO {
 
             while (rs.next()){
             	
-            	Entreprise ent = null; // to delete
-            	// Entreprise ent = getEntreprise(rs.getInt("entreprise_id") 
+            	EntrepriseDAO entreprisedao = new EntrepriseDAO();
+            	Entreprise ent = entreprisedao.getEntreprise(rs.getInt("entreprise_id")); 
             	
                 Team T = new Team(rs.getInt("team_id"), rs.getString("nom"), ent);
                 teams.add(T);
@@ -47,11 +47,11 @@ public class TeamDAO {
             preparedStatement.setInt(1,id);
             ResultSet rs = preparedStatement.executeQuery();
             if (rs.next()){
-            	            	
-            	Entreprise ent = null; // to delete
-            	// Entreprise ent = getEntreprise(rs.getInt("entreprise_id") 
             	
-                Team T = new Team(id, rs.getString("nom"),ent);
+            	EntrepriseDAO entreprisedao = new EntrepriseDAO();     	            	
+            	Entreprise ent = entreprisedao.getEntreprise(rs.getInt("entreprise_id")); 
+            	
+                Team T = new Team(id, rs.getString("nom"), ent);
                 return T;
             }
         }catch (Exception e){
@@ -75,8 +75,8 @@ public class TeamDAO {
             ResultSet rs = preparedStatement.executeQuery();
             if (rs.next()){
             	            	
-            	Entreprise ent = null; // to delete
-            	// Entreprise ent = getEntreprise(rs.getInt("entreprise_id") 
+            	EntrepriseDAO entreprisedao = new EntrepriseDAO();     	            	
+            	Entreprise ent = entreprisedao.getEntreprise(rs.getInt("entreprise_id")); 
             	
                 Team T = new Team(rs.getInt("team_id"),nom,ent);
                 return T;
