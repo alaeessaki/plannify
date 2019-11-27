@@ -1,0 +1,66 @@
+.left-nav {
+    background-color: #FE7568;
+    width: 55px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    top: 0;
+}
+
+.logo {
+    width: 50px;
+}
+
+.left-nav .content i {
+    color: white;
+    font-size: 18px;
+    font-weight: 300;
+}
+
+.fa-bell{
+    position: relative;
+}
+.fa-bell .badge{
+    position: absolute;
+    left: 50%;
+    bottom: 50%;
+}
+
+
+/* Second nav */
+.second-nav{
+    background-color: #FFD4D4;
+    width: 210px;
+    position: absolute;
+    left: 55px;
+    bottom: 0;
+    top: 0;
+}
+
+.nav-list{
+    list-style-type: none;
+}
+.second-nav .content .nav-list .nav-item{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: #5a5a5a;   
+}
+.nav-item a{
+    text-decoration: none;
+    color: #5a5a5a; 
+    padding-top: 5px;
+}
+
+.second-nav .content h2{
+    color: #5a5a5a;
+    font-size: 1.5rem;
+}
+
+main{
+    width: calc(100% - 265px);
+    margin-left: 265px;
+}
+
+
+
