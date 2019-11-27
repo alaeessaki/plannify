@@ -19,7 +19,7 @@ public class EntrepriseDAO {
 			Connection connection = Database.getConx();
 			ps = connection.prepareStatement(query);
 			ps.setString(1, E.getNom());
-			ps.setInt(2, E.getId());
+			ps.setString(2, E.getDescription());
 			ps.execute();
 
 		} catch (SQLException e) {
@@ -29,14 +29,13 @@ public class EntrepriseDAO {
 	}
 	
 	public boolean deleteEntreprise(Entreprise E) {
-		PreparedStatement ps;
-		String query="Delete from entreprises where id=?";
+	
+		
 		try {
 			Connection connection = Database.getConx();
-			ps = connection.prepareStatement(query);
-			ps.setInt(1, E.getId());
-			ps.execute();
-	
+			String query="Delete from entreprises where entreprise_id="+ E.getId();
+			Statement stm = connection.createStatement();
+			stm.executeUpdate(query);	
 			return true;
 	
 		} catch (SQLException e) {
@@ -48,17 +47,19 @@ public class EntrepriseDAO {
 	
 	public Entreprise getEntreprise(int id){
 		Entreprise entreprise = null;
-		String query="select * from entreprises where id = "+id;
-	
+		
 		try {
 			Connection connection = Database.getConx();
-			Statement st = connection.createStatement();
-			ResultSet rs = st.executeQuery(query);
+		
+			String query="select * from entreprises where entreprise_id = ?";
+			PreparedStatement ps = connection.prepareStatement(query);
+			ps.setInt(1, id);
+			ResultSet rs = ps.executeQuery();
 		
 			if(rs.next()) {
-				String Nom = rs.getString("nom");
-				String Desc = rs.getString("description");
-				entreprise = new Entreprise(Nom, Desc);
+		
+				entreprise = new Entreprise(rs.getInt("entreprise_id"), rs.getString("nom"),rs.getString("description"));
+				return entreprise;
 			}
 	
 		} catch (SQLException e) {
