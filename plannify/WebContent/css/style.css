@@ -68,6 +68,18 @@ main {
 
 /* Main */
 
+/* page projet button*/
+
+.update-btn:hover{
+    background-color: #b84639;
+    border: #b84639;
+}
+
+.update-btn{
+    background-color: #FE7568;
+    border: #FE7568;
+}
+
 main {
     padding: 1.5rem;
 }
