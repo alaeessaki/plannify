@@ -22,7 +22,8 @@
                 <a href=""><i class="fa fa-plus mt-3" aria-hidden="true"></i></a>
             </div>
             <div class="bottom-content d-flex flex-column text-center">
-                <a href=""> <i class="fa fa-bell mb-3" aria-hidden="true"><span class="badge badge-dark">4</span></i></a>
+                <a href=""> <i class="fa fa-bell mb-3" aria-hidden="true"><span
+                            class="badge badge-dark">4</span></i></a>
                 <a href=""> <i class="fa fa-info mb-3" aria-hidden="true"></i>
                 </a>
                 <a href=""> <i class="fa fa-user mb-3" aria-hidden="true"></i>
@@ -33,68 +34,72 @@
 
     <nav class="second-nav">
         <div class="content">
-            <h2 class="text-center mt-3">Plannify</h2>
+            <h2 class="text-center mt-4">Plannify</h2>
             <ul class="nav-list pl-4 mt-4">
                 <li class="nav-item">
-                  <i class="fa fa-tasks" aria-hidden="true"></i>
-                  <a class="nav-link" href="#">my work</a>
+                    <i class="fa fa-tasks" aria-hidden="true"></i>
+                    <a class="nav-link" href="#">my work</a>
                 </li>
                 <li class="nav-item">
                     <i class="fa fa-folder" aria-hidden="true"></i>
-                  <a class="nav-link" href="#">projects</a>
+                    <a class="nav-link" href="index.html">projects</a>
                 </li>
                 <li class="nav-item">
-                  <i class="fa fa-times" aria-hidden="true"></i>
-                  <a class="nav-link" href="#">recent</a>
+                    <i class="fa fa-users" aria-hidden="true"></i>
+                    <a class="nav-link" href="team.html">Teams</a>
                 </li>
-              </ul>
+                <li class="nav-item">
+                    <i class="fa fa-list" aria-hidden="true"></i>
+                    <a class="nav-link" href="users.html">Users</a>
+                </li>
+            </ul>
         </div>
     </nav>
-
+    
     <main>
         <div class="container">
-                <div class="row">
-                    <div class="col-md-4 col-md-offset-4">
-                        <div class="panel panel-default">
-                            <div class="panel-body">
-                                <h3 class="text-center">
-                                    Edit  Project :</h3>
-                                <form class="form form-signup" role="form" action="#" method="post">
-                                    <div class="form-group">
-                                            <label for="projectname">Nom du projet :</label>
-                                            <input type="text" id="projectname" class="form-control" value="current name" />
-                                    </div>
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <h3 class="text-center">
+                                Edit Project :</h3>
+                            <form class="form form-signup" role="form" action="#" method="post">
+                                <div class="form-group">
+                                    <label for="projectname">Nom du projet :</label>
+                                    <input type="text" id="projectname" class="form-control" value="current name" />
+                                </div>
 
-                                    <div class="form-group">
-                                        <label for="desc">Project Description :</label>
-                                        <textarea class="form-control" id="desc" rows="4" >current project desc</textarea>
-                                    </div>
+                                <div class="form-group">
+                                    <label for="desc">Project Description :</label>
+                                    <textarea class="form-control" id="desc" rows="4">current project desc</textarea>
+                                </div>
 
-                                    <div class="form-group">
-                                        <label for="changeteam">change Team :</label>
-                                        <select class="form-control" id="changeteam">
-                                          <option>Team A</option>
-                                          <option>Team B</option>
-                                          <option>Team C</option>
-                                        </select>
-                                    </div>
+                                <div class="form-group">
+                                    <label for="changeteam">change Team :</label>
+                                    <select class="form-control" id="changeteam">
+                                        <option>Team A</option>
+                                        <option>Team B</option>
+                                        <option>Team C</option>
+                                    </select>
+                                </div>
 
-                                    <div class="form-group">
-                                            <label for="changecat">change Categorie :</label>
-                                            <select class="form-control" id="changecat">
-                                              <option>Categorie A</option>
-                                              <option>Categorie B</option>
-                                              <option>Categorie C</option>
-                                            </select>
-                                        </div>
-                                    
-                                      <input type="submit" value="Update" class="update-btn btn btn-sm btn-primary btn-block">
+                                <div class="form-group">
+                                    <label for="changecat">change Categorie :</label>
+                                    <select class="form-control" id="changecat">
+                                        <option>Categorie A</option>
+                                        <option>Categorie B</option>
+                                        <option>Categorie C</option>
+                                    </select>
+                                </div>
+
+                                <input type="submit" value="Update" class="update-btn btn btn-sm btn-primary btn-block">
                             </form>
                         </div>
                     </div>
                 </div>
-        </div>
-        
+            </div>
+
     </main>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -109,4 +114,3 @@
 </body>
 
 </html>
-
