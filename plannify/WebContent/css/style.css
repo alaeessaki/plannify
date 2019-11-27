@@ -17,18 +17,19 @@
     font-weight: 300;
 }
 
-.fa-bell{
+.fa-bell {
     position: relative;
 }
-.fa-bell .badge{
+
+.fa-bell .badge {
     position: absolute;
     left: 50%;
     bottom: 50%;
 }
 
-
 /* Second nav */
-.second-nav{
+
+.second-nav {
     background-color: #FFD4D4;
     width: 210px;
     position: absolute;
@@ -37,30 +38,87 @@
     top: 0;
 }
 
-.nav-list{
+.nav-list {
     list-style-type: none;
 }
-.second-nav .content .nav-list .nav-item{
+
+.second-nav .content .nav-list .nav-item {
     display: flex;
     flex-direction: row;
     align-items: center;
-    color: #5a5a5a;   
+    color: #5a5a5a;
 }
-.nav-item a{
+
+.nav-item a {
     text-decoration: none;
-    color: #5a5a5a; 
+    color: #5a5a5a;
     padding-top: 5px;
 }
 
-.second-nav .content h2{
+.second-nav .content h2 {
     color: #5a5a5a;
     font-size: 1.5rem;
+    font-weight: 600;
 }
 
-main{
+main {
     width: calc(100% - 265px);
     margin-left: 265px;
 }
 
+/* Main */
 
+/* page projet button*/
 
+.update-btn:hover{
+    background-color: #b84639;
+    border: #b84639;
+}
+
+.update-btn{
+    background-color: #FE7568;
+    border: #FE7568;
+}
+
+main {
+    padding: 1.5rem;
+}
+
+.recent-projects h2{
+    font-size: 13px;
+}
+
+.title h1 {
+    font-size: 25px;
+}
+
+.title a {
+    background-color: #FE7568;
+    color: white;
+    font-size: 14px;
+}
+
+.filter-btn {
+    background-color: #FFD4D4;
+    color: #5a5a5a;
+}
+
+.view-btn {
+    background-color: #FE7568;
+    color: white;
+}
+.card-footer{
+    background-color: #FFD4D4;
+}
+.card-footer i{
+    color: #5a5a5a;
+}
+
+.table th{
+    font-size: 14px;
+    font-weight: 600;
+}
+.table td a{
+    color: black;
+    text-decoration: underline;
+}
