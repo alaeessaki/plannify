@@ -19,6 +19,8 @@ public class ProjectDAO {
 		Connection con = null;
 		Statement stm = null;
 		ResultSet rs = null;
+		TeamDAO teamdao = new TeamDAO();			
+		CategorieDAO categoriedao = new CategorieDAO();
 		
 		try {
 			con = Database.getConx();
@@ -32,9 +34,6 @@ public class ProjectDAO {
 				Date created_at = rs.getDate("created_at");			
 				int team_id = rs.getInt("team_id");
 				int categorie_id = rs.getInt("categorie_id");
-				
-				TeamDAO teamdao = new TeamDAO();			
-				CategorieDAO categoriedao = new CategorieDAO();
 				
 				Team team = teamdao.getTeam(team_id);
 				Categorie categorie = categoriedao.getCategorie(categorie_id);	
@@ -85,12 +84,43 @@ public class ProjectDAO {
         }
         return null;
     }
+	public Project getProject(String nom){
+        Connection con = Database.getConx();
+        Project project = null;
+        TeamDAO teamdao = new TeamDAO();
+		CategorieDAO categoriedao = new CategorieDAO();
+		
+        try{
+            String query = "SELECT * FROM projets WHERE nom = ?";
+            PreparedStatement preparedStatement = con.prepareStatement(query);
+            preparedStatement.setString(1, nom);
+            ResultSet rs = preparedStatement.executeQuery();
+            
+            if (rs.next()){		
+				
+				Team team = teamdao.getTeam(rs.getInt("team_id"));
+				Categorie categorie = categoriedao.getCategorie(rs.getInt("categorie_id"));	
+            	
+				project = new Project(rs.getInt("projet_id"), nom, rs.getString("description"), rs.getDate("created_at"), team, categorie);
+				return project;              
+            }
+            
+            
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            if(con!=null){
+                Database.disconnect();
+            }
+        }
+        return null;
+    }
 	
 	// add a project ...
     public void addProject(Project project){
         Connection con = Database.getConx();
         try {
-        	String query = "INSERT INTO projets (nom, description, created_at, team_id, categorie_id) VALUES (?, ?, ?, ?, ?);";
+        	String query = "INSERT INTO projets VALUES (NULL, ?, ?, ?, ?, ?)";
         	      
         	PreparedStatement preparedStatement = con.prepareStatement(query);
         	preparedStatement.setString(1,project.getNom());

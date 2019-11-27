@@ -1,6 +1,8 @@
 package controllers;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -52,22 +54,25 @@ public class Testing extends HttpServlet {
 		EntrepriseDAO edao = new EntrepriseDAO();
 		ProjectDAO pdao = new ProjectDAO();
 		UserDAO udao = new UserDAO();
+		CategorieDAO cdao = new CategorieDAO();
+	
+		Date testd1 = null;
 		
 		teams = tdao.getAll();
 		projects = pdao.getAllProjects();
 		users = udao.getAll();
-	
+		Project pr1 = new Project("devops", "testing the prDAO", testd1 , tdao.getTeam(1), cdao.getCategorie(1));
 		
-		System.out.println(udao.getUser(1));
+		pdao.addProject(pr1);
+		
+		System.out.println(pdao.getProject("projet1"));
 		
 		System.out.println("**********************");
 		
-		for(int i = 0; i < users.size(); i++) {
-			System.out.println(users.get(i));
+		for(int i = 0; i < projects.size(); i++) {
+			System.out.println(projects.get(i));
 		}
 		
-			
-	
 	}	
 
 	/**

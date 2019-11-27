@@ -56,10 +56,6 @@ public class TeamDAO {
             }
         }catch (Exception e){
             e.printStackTrace();
-        }finally {
-            if(con!=null){
-                Database.disconnect();
-            }
         }
         return null;
     }
@@ -83,10 +79,6 @@ public class TeamDAO {
             }
         }catch (Exception e){
             e.printStackTrace();
-        }finally {
-            if(con!=null){
-                Database.disconnect();
-            }
         }
         return null;
     }
