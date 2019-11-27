@@ -2,7 +2,6 @@ package controllers;
 
 import java.io.IOException;
 import java.sql.Date;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -11,19 +10,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import beans.Categorie;
-import beans.Entreprise;
-import beans.Project;
-import beans.Role;
-import beans.Team;
-import beans.User;
-import models.CategorieDAO;
-import models.Database;
-import models.EntrepriseDAO;
-import models.ProjectDAO;
-import models.RoleDAO;
-import models.TeamDAO;
-import models.UserDAO;
+import beans.*;
+
+
+import models.*;
+
 
 /**
  * Servlet implementation class Testing
@@ -69,8 +60,8 @@ public class Testing extends HttpServlet {
 		
 		System.out.println("**********************");
 		
-		for(int i = 0; i < projects.size(); i++) {
-			System.out.println(projects.get(i));
+		for(int i = 0; i < users.size(); i++) {
+			System.out.println(users.get(i));
 		}
 		
 	}	
