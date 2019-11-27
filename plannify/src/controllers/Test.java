@@ -13,17 +13,19 @@ import beans.Project;
 import models.ProjectDAO;
 
 
-/**
- * Servlet implementation class Testing
- */
-@WebServlet("/Testing")
-public class Testing extends HttpServlet {
-	private static final long serialVersionUID = 1L;
 
+/**
+ * Servlet implementation class Test
+ */
+@WebServlet("/Test")
+public class Test extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
     /**
-     * Default constructor. 
+     * @see HttpServlet#HttpServlet()
      */
-    public Testing() {
+    public Test() {
+        super();
         // TODO Auto-generated constructor stub
     }
 
@@ -31,22 +33,10 @@ public class Testing extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		
 		
-		ArrayList<Project> projects = new ArrayList<Project>();
-		ProjectDAO pdao = new ProjectDAO();
-		
-		projects = pdao.getAllProjects();
-				
-		System.out.println(pdao.getProject("projet1"));
-		
-		System.out.println("**********************");
-		
-		for(int i = 0; i < projects.size(); i++) {
-			System.out.println(projects.get(i));
-		}
-		
-	}	
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
