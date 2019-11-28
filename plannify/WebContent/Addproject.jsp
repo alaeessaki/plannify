@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 
@@ -61,7 +63,7 @@
     <h1 class="text-center mt-3">Add Your Project</h1>
     <div class="container-fluid center mt-4 ">
 
-      <form>
+      <form method="Get" action="AddprjServlet">
         <div class="form-group center col-md-9  ml-5 ">
           <label for="exampleInputText1">Name of project</label>
           <input type="text" class="form-control" id="exampleInputText1" aria-describedby="textHelp"
@@ -69,16 +71,16 @@
         </div>
         <div class="form-group center col-md-9  ml-5 ">
           <label for="exampleInputText1">Team</label>
-          <select class="form-control">
+          <select class="form-control"name="team" >
             <option>Default team 1</option>
             <option>Default team 1</option>
           </select>
         </div>
         <div class="form-group center col-md-9  ml-5 ">
           <label for="exampleInputText1">Project Category</label>
-          <select class="form-control">
+          <select class="form-control" name="categ">
             <option>Default select 1</option>
-            <option>Default select 1</option>
+            <option>Default select 2</option>
           </select>
         </div>
 
