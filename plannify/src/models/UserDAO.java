@@ -158,6 +158,48 @@ public class UserDAO {
 		return user;
 	}
 	
+	//login method....
+	public User getUser(String email, String password) {
+		User user = null;
+		Connection connection = null;
+		PreparedStatement preparedStatement = null;
+		ResultSet resultSet = null;
+		String query = "";
+		
+		try {
+			connection = Database.getConx();
+			query = "SELECT * FROM users WHERE email=? AND password=?";
+			preparedStatement = connection.prepareStatement(query);
+			
+			preparedStatement.setString(1, email);
+			preparedStatement.setString(2, password);
+			
+			resultSet = preparedStatement.executeQuery();
+			
+			if(resultSet.next()) {
+				int id = resultSet.getInt("user_id");
+				String nom = resultSet.getString("nom");
+				String prenom = resultSet.getString("prenom");
+				int role_id = resultSet.getInt("role_id");
+				int entreprise_id = resultSet.getInt("entreprise_id");
+				
+				RoleDAO roledao = new RoleDAO();
+				Role role = roledao.getRole(role_id);
+				EntrepriseDAO entreprisedao = new EntrepriseDAO();
+				Entreprise entreprise = entreprisedao.getEntreprise(entreprise_id);
+				
+				
+				user = new User(id, email, password, nom, prenom, role, entreprise);
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return user;
+	}
+	
+	//update ...
+	
 	public void updateUser(User user) {
 		Connection connection = null;
 		PreparedStatement preparedStatement = null;

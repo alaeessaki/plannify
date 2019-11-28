@@ -1,6 +1,8 @@
 package controllers;
 
 import java.io.IOException;
+
+
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -9,8 +11,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import beans.Project;
-import models.ProjectDAO;
+import beans.*;
+
+
+import models.*;
+
 
 
 /**
@@ -42,9 +47,7 @@ public class Testing extends HttpServlet {
 		
 		System.out.println("**********************");
 		
-		for(int i = 0; i < projects.size(); i++) {
-			System.out.println(projects.get(i));
-		}
+	
 		
 	}	
 
