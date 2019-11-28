@@ -1,7 +1,8 @@
 .left-nav {
     background-color: #FE7568;
     width: 55px;
-    position: absolute;
+    height: 100%;
+    position: fixed;
     left: 0;
     bottom: 0;
     top: 0;
@@ -32,7 +33,7 @@
 .second-nav {
     background-color: #FFD4D4;
     width: 210px;
-    position: absolute;
+    position: fixed;
     left: 55px;
     bottom: 0;
     top: 0;
@@ -121,4 +122,7 @@ main {
 .table td a{
     color: black;
     text-decoration: underline;
+}
+.dropdown-menu a{
+    text-decoration: none !important;
 }

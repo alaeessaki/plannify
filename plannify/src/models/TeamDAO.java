@@ -28,8 +28,6 @@ public class TeamDAO {
                 Team T = new Team(rs.getInt("team_id"), rs.getString("nom"), ent);
                 teams.add(T);
             }
-            stmt.close();
-            rs.close();
             return teams;
         }catch (Exception e){
             e.printStackTrace();
@@ -117,5 +115,32 @@ public class TeamDAO {
              e.printStackTrace();
          }
     }
+    
+    public ArrayList<User> getTeamMembers(Team T) {
+    	
+ 	Connection con = Database.getConx();
+ 	ArrayList<User> lu = new ArrayList<User>();
+    	
+        try{
+            String query = "SELECT * FROM users_teams WHERE team_id=?";
+            PreparedStatement preparedStatement = con.prepareStatement(query);
+            preparedStatement.setInt(1,T.getId());
+            ResultSet rs = preparedStatement.executeQuery();
+          
+            while (rs.next()){
+            	UserDAO udao = new UserDAO();
+            	int id = rs.getInt("user_id");
+            	User user = udao.getUser(id);
+            	lu.add(user);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return lu;
+    }
+    
+    
+    
+
     
 }

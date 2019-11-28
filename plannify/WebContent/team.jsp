@@ -1,6 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+ <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +11,7 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/style.css">
-    <title>Document</title>
+    <title>team page</title>
 </head>
 
 <body>
@@ -104,10 +106,12 @@
                     </tr>
                 </thead>
                 <tbody>
+         <c:forEach items="${teams}" var="t" varStatus="loop">
+         
                     <tr>
-                        <td scope="row"><a href="">Team name</a></td>
+                        <td scope="row"><a href="">${t.nom}</a></td>
                         <td><a href="">projects leader</a></td>
-                        <td>30</td>
+                        <td>${memberNum[loop.count-1]}</td>
                         <td>
                             <div class="action">
                                 <button class="btn mr-1" type="button" id="triggerId" data-toggle="dropdown"
@@ -120,70 +124,7 @@
                             </div>
                         </td>
                     </tr>
-                    <tr>
-                        <td scope="row"><a href="">Team name</a></td>
-                        <td><a href="">projects leader</a></td>
-                        <td>30</td>
-                        <td>
-                            <div class="action">
-                                <button class="btn mr-1" type="button" id="triggerId" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">
-                                    <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="triggerId">
-                                    <button class="dropdown-item" href="#">Action</button>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td scope="row"><a href="">Team name</a></td>
-                        <td><a href="">projects leader</a></td>
-                        <td>30</td>
-                        <td>
-                            <div class="action">
-                                <button class="btn mr-1" type="button" id="triggerId" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">
-                                    <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="triggerId">
-                                    <button class="dropdown-item" href="#">Action</button>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td scope="row"><a href="">Team name</a></td>
-                        <td><a href="">projects leader</a></td>
-                        <td>30</td>
-                        <td>
-                            <div class="action">
-                                <button class="btn mr-1" type="button" id="triggerId" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">
-                                    <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="triggerId">
-                                    <button class="dropdown-item" href="#">Action</button>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td scope="row"><a href="">Team name</a></td>
-                        <td><a href="">projects leader</a></td>
-                        <td>30</td>
-                        <td>
-                            <div class="action">
-                                <button class="btn mr-1" type="button" id="triggerId" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">
-                                    <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-                                </button>
-                                <div class="dropdown-menu" aria-labelledby="triggerId">
-                                    <button class="dropdown-item" href="#">Action</button>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
+          </c:forEach>     
                 </tbody>
             </table>
         </div>

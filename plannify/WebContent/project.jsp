@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,10 +39,10 @@
 
     <nav class="second-nav">
         <div class="content">
-            <h2 class="text-center mt-4 pb-2">Project name</h2>
+            <h2 class="text-center mt-4 pb-2">${project.nom }</h2>
             <div class="back-to-project d-flex flex-row align-items-center">
-                <a href="index.html"><i class="fa fa-arrow-left mr-2" aria-hidden="true"></i></a>
-                <a href="index.html">Back to projects</a>
+                <a href="projects"><i class="fa fa-arrow-left mr-2" aria-hidden="true"></i></a>
+                <a href="projects">Back to projects</a>
             </div>
 
             <hr>
