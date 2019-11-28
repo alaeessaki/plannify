@@ -144,7 +144,7 @@ public class ProjectDAO {
     public void updateProject(Project project) {
     	Connection con = Database.getConx();
         try{
-        	String query = "UPDATE `projets` SET `projet_id`=,`nom`='"+project.getNom()+"',`description`='"+ project.getDescription() +"',`created_at`='"+project.getCreated_at()+"',`team_id`="+project.getTeam().getId()+",`categorie_id`=" + project.getCategorie().getId() + " WHERE projet_id = "+ project.getId();
+        	String query = "UPDATE `projets` SET `nom`='"+project.getNom()+"',`description`='"+ project.getDescription() +"',`team_id`='"+ project.getTeam().getId() +"',`categorie_id`='"+ project.getCategorie().getId() +"'WHERE projet_id = "+ project.getId();
         	Statement statement = con.createStatement();
             statement.executeUpdate(query);
             

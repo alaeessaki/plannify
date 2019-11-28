@@ -26,6 +26,14 @@ public class Project {
 		this.team = team;
 		this.categorie = categorie;
 	}
+	public Project(int id, String nom, String description, Team team, Categorie categorie) {
+		this.id = id;
+		this.nom = nom;
+		this.description = description;
+		this.team = team;
+		this.categorie = categorie;
+	}
+
 
 	public String getNom() {
 		return nom;

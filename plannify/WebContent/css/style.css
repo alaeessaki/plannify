@@ -123,3 +123,6 @@ main {
     color: black;
     text-decoration: underline;
 }
+.dropdown-menu a{
+    text-decoration: none !important;
+}
