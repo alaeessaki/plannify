@@ -48,10 +48,6 @@ public class RoleDAO {
             }
         }catch (Exception e){
             e.printStackTrace();
-        }finally {
-            if(con!=null){
-                Database.disconnect();
-            }
         }
         return null;
     }
@@ -72,10 +68,6 @@ public class RoleDAO {
             }
         }catch (Exception e){
             e.printStackTrace();
-        }finally {
-            if(con!=null){
-                Database.disconnect();
-            }
         }
         return null;
     }

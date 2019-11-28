@@ -106,12 +106,12 @@
                     </tr>
                 </thead>
                 <tbody>
-         <c:forEach items="${teams}" var="t">
+         <c:forEach items="${teams}" var="t" varStatus="loop">
          
                     <tr>
                         <td scope="row"><a href="">${t.nom}</a></td>
                         <td><a href="">projects leader</a></td>
-                        <td>hna tleft a si alae</td>
+                        <td>${memberNum[loop.count-1]}</td>
                         <td>
                             <div class="action">
                                 <button class="btn mr-1" type="button" id="triggerId" data-toggle="dropdown"

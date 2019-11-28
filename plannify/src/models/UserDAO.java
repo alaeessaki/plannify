@@ -33,11 +33,6 @@ public class UserDAO {
 			
 		}catch(Exception e) {
 			e.printStackTrace();
-		}finally{
-			if(connection!=null) {
-				connection = null;
-				Database.disconnect();
-			}
 		}
 	}
 	
@@ -81,20 +76,15 @@ public class UserDAO {
 	}
 	
 	public User getUser(int id) {
-		User user = null;
-		Connection connection = null;
-		PreparedStatement preparedStatement = null;
-		ResultSet resultSet = null;
-		String query = "";
-		
+
 		try {
-			connection = Database.getConx();
-			query = "SELECT * FROM users WHERE user_id=?";
-			preparedStatement = connection.prepareStatement(query);
+			Connection connection = Database.getConx();
+			String query = "SELECT * FROM users WHERE user_id=?";
+			PreparedStatement preparedStatement = connection.prepareStatement(query);
 			
 			preparedStatement.setInt(1, id);
 			
-			resultSet = preparedStatement.executeQuery();
+			ResultSet resultSet = preparedStatement.executeQuery();
 			
 			if(resultSet.next()) {
 				String email = resultSet.getString("email");
@@ -109,31 +99,26 @@ public class UserDAO {
 				EntrepriseDAO entreprisedao = new EntrepriseDAO();
 				Entreprise entreprise = entreprisedao.getEntreprise(entreprise_id);
 				
-				
-				user = new User(id, email, password, nom, prenom, role, entreprise);
+				User user = new User(id, email, password, nom, prenom, role, entreprise);
+				return user;
 			}
 			
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-		return user;
+		return null;
 	}
 	
 	public User getUser(String email) {
-		User user = null;
-		Connection connection = null;
-		PreparedStatement preparedStatement = null;
-		ResultSet resultSet = null;
-		String query = "";
 		
 		try {
-			connection = Database.getConx();
-			query = "SELECT * FROM users WHERE email=?";
-			preparedStatement = connection.prepareStatement(query);
+			Connection connection = Database.getConx();
+			String query = "SELECT * FROM users WHERE email=?";
+			PreparedStatement preparedStatement = connection.prepareStatement(query);
 			
 			preparedStatement.setString(1, email);
 			
-			resultSet = preparedStatement.executeQuery();
+			ResultSet resultSet = preparedStatement.executeQuery();
 			
 			if(resultSet.next()) {
 				int id = resultSet.getInt("user_id");
@@ -149,13 +134,14 @@ public class UserDAO {
 				Entreprise entreprise = entreprisedao.getEntreprise(entreprise_id);
 				
 				
-				user = new User(id, email, password, nom, prenom, role, entreprise);
+				User user = new User(id, email, password, nom, prenom, role, entreprise);
+				return user;
 			}
 			
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-		return user;
+		return null;
 	}
 	
 	//login method....

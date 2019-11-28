@@ -37,20 +37,19 @@ public class teampagesrv extends HttpServlet {
 		TeamDAO tdao = new TeamDAO();
 		ArrayList<Team> teamList = tdao.getAll();
 		ArrayList<Integer> memberNum = new ArrayList<Integer>();
+		ArrayList<User> memberList = new ArrayList<User>();
 		
-		for(int i=0;i<teamList.size();i++) {
-			ArrayList<User> memberList = tdao.getTeamMembers(teamList.get(i));
-			memberNum.add(memberList.size());
+		teamList = tdao.getAll();
+		
+		for(int i = 0; i<teamList.size(); i++) {
+			int size_of_team = tdao.getTeamMembers(teamList.get(i)).size();
+			memberNum.add(size_of_team);
 		}
 		
-		
-		HttpSession s = request.getSession();
-		s.setAttribute("teams", teamList);
-		s.setAttribute("memberNum", memberNum);
-
+		HttpSession session = request.getSession();
+		session.setAttribute("teams", teamList);
+		session.setAttribute("memberNum", memberNum);
 		response.sendRedirect("team.jsp");
-		
-		
 	}
 
 	/**

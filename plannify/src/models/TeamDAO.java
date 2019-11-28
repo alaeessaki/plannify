@@ -28,8 +28,6 @@ public class TeamDAO {
                 Team T = new Team(rs.getInt("team_id"), rs.getString("nom"), ent);
                 teams.add(T);
             }
-            stmt.close();
-            rs.close();
             return teams;
         }catch (Exception e){
             e.printStackTrace();
@@ -128,19 +126,17 @@ public class TeamDAO {
             PreparedStatement preparedStatement = con.prepareStatement(query);
             preparedStatement.setInt(1,T.getId());
             ResultSet rs = preparedStatement.executeQuery();
+          
             while (rs.next()){
-            	            	
             	UserDAO udao = new UserDAO();
-      
-            	lu.add(udao.getUser(rs.getInt("user_id")));
-            	
+            	int id = rs.getInt("user_id");
+            	User user = udao.getUser(id);
+            	lu.add(user);
             }
-            return lu;
-
         }catch (Exception e){
             e.printStackTrace();
         }
-        return null;
+        return lu;
     }
     
     
