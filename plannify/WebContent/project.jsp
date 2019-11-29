@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/project.css">
-    <title>Document</title>
+    <title>Worklab</title>
 </head>
 
 <body>
@@ -31,7 +31,7 @@
                             class="badge badge-dark">4</span></i></a>
                 <a href=""> <i class="fa fa-info mb-3" aria-hidden="true"></i>
                 </a>
-                <a href=""> <i class="fa fa-user mb-3" aria-hidden="true"></i>
+                <a href="logout"> <i class="fa fa-user mb-3" aria-hidden="true"></i>
                 </a>
             </div>
         </div>

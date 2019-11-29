@@ -1,8 +1,6 @@
 package controllers;
 
 import java.io.IOException;
-
-
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -11,24 +9,25 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import beans.*;
-
-
-import models.*;
+import beans.Project;
+import models.EntrepriseDAO;
+import models.ProjectDAO;
+import models.TeamDAO;
 
 
 
 /**
- * Servlet implementation class Testing
+ * Servlet implementation class Test
  */
-@WebServlet("/Testing")
-public class Testing extends HttpServlet {
+@WebServlet("/addteam")
+public class addteamserv extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+       
     /**
-     * Default constructor. 
+     * @see HttpServlet#HttpServlet()
      */
-    public Testing() {
+    public addteamserv() {
+        super();
         // TODO Auto-generated constructor stub
     }
 
@@ -36,27 +35,26 @@ public class Testing extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		
 		
-		ArrayList<Project> projects = new ArrayList<Project>();
-		ProjectDAO pdao = new ProjectDAO();
-		
-		projects = pdao.getAllProjects();
-				
-		System.out.println(pdao.getProject("projet1"));
-		
-		System.out.println("**********************");
-		
-	
-		
-	}	
+	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		
+		String team = request.getParameter("name");
+		TeamDAO tdao = new TeamDAO();
+		EntrepriseDAO edao = new EntrepriseDAO();
+		
+		try {
+			
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }

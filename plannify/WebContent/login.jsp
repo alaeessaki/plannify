@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 
@@ -26,8 +27,9 @@
                 </div>
                 <button type="submit" class="btn-login btn-block">LOGIN</button>
                 <div class="d-flex mt-3">
-                    <p>not registered yet ? </p> <a href="#" class="login-redirect ml-2">create account</a>
+                    <p>not registered yet ? </p> <a href="signup.jsp" class="login-redirect ml-2">create account</a>
                 </div>
+                <p class="text-danger">${ error }</p>
             </form>
         </div>
     </div>

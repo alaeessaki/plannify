@@ -27,7 +27,9 @@
     left: 50%;
     bottom: 50%;
 }
-
+.btn-logout{
+	z-index:5;
+}
 /* Second nav */
 
 .second-nav {
@@ -38,6 +40,7 @@
     bottom: 0;
     top: 0;
 }
+
 
 .nav-list {
     list-style-type: none;

@@ -30,8 +30,10 @@
                             class="badge badge-dark">4</span></i></a>
                 <a href=""> <i class="fa fa-info mb-3" aria-hidden="true"></i>
                 </a>
-                <a href=""> <i class="fa fa-user mb-3" aria-hidden="true"></i>
-                </a>
+                 <a href="logout"><i class="fa fa-user mb-3" aria-hidden="true" id="triggerId" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false"></i></a>
+                
+                
             </div>
         </div>
     </nav>
@@ -42,19 +44,19 @@
             <ul class="nav-list pl-4 mt-4">
                 <li class="nav-item">
                     <i class="fa fa-tasks" aria-hidden="true"></i>
-                    <a class="nav-link" href="#">my work</a>
+                    <a class="nav-link" href="#">Tasks</a>
                 </li>
                 <li class="nav-item">
                     <i class="fa fa-folder" aria-hidden="true"></i>
-                    <a class="nav-link" href="projects">projects</a>
+                    <a class="nav-link" href="projects">Projects</a>
                 </li>
                 <li class="nav-item">
                     <i class="fa fa-users" aria-hidden="true"></i>
-                    <a class="nav-link" href="team.html">Teams</a>
+                    <a class="nav-link" href="team.jsp">Teams</a>
                 </li>
                 <li class="nav-item">
                     <i class="fa fa-list" aria-hidden="true"></i>
-                    <a class="nav-link" href="users.html">Users</a>
+                    <a class="nav-link" href="users.jsp">Users</a>
                 </li>
             </ul>
         </div>
@@ -64,7 +66,7 @@
     <main>
         <div class="title pl-3 d-flex flex-row justify-content-between ">
             <h1>Projects</h1>
-            <a name="" id="" class="btn" href="AddProject.html" role="button">add project</a>
+            <a name="" id="" class="btn" href="Addproject.jsp" role="button">Add project</a>
         </div>
         <div class="recent-projects mb-3">
             <h2 class="pl-3 pb-2">Recent projects</h2>
@@ -83,7 +85,7 @@
                                     <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="triggerId">
-                                    <button class="dropdown-item" href="#">Action</button>
+                                    <button class="dropdown-item">Action</button>
                                 </div>
                             </div>
                         </div>
@@ -100,7 +102,7 @@
                                     <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="triggerId">
-                                    <button class="dropdown-item" href="#">Action</button>
+                                    <button class="dropdown-item" >Action</button>
                                 </div>
                             </div>
                         </div>
@@ -117,7 +119,7 @@
                                     <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="triggerId">
-                                    <button class="dropdown-item" href="#">Action</button>
+                                    <button class="dropdown-item">Action</button>
                                 </div>
                             </div>
                         </div>
@@ -172,7 +174,7 @@
                     <tr>
                         <td scope="row"><a href="ProjectDetails?id=${project.id}">${project.nom }</a></td>
                         <td>${project.categorie.nom }</td>
-                        <td><a href="">projects leader</a></td>
+                        <td><a href="">${user.nom}</a></td>
                         <td>
                             <div class="action">
                                 <button class="btn mr-1" type="button" id="triggerId" data-toggle="dropdown"

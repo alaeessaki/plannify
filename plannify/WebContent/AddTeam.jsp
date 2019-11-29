@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+ <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 
@@ -27,7 +30,7 @@
                             class="badge badge-dark">4</span></i></a>
                 <a href=""> <i class="fa fa-info mb-3" aria-hidden="true"></i>
                 </a>
-                <a href=""> <i class="fa fa-user mb-3" aria-hidden="true"></i>
+                <a href="logout"> <i class="fa fa-user mb-3" aria-hidden="true"></i>
                 </a>
             </div>
         </div>
@@ -42,15 +45,15 @@
                 </li>
                 <li class="nav-item">
                     <i class="fa fa-folder" aria-hidden="true"></i>
-                    <a class="nav-link" href="index.html">projects</a>
+                    <a class="nav-link" href="projects">projects</a>
                 </li>
                 <li class="nav-item">
                     <i class="fa fa-users" aria-hidden="true"></i>
-                    <a class="nav-link" href="team.html">Teams</a>
+                    <a class="nav-link" href="team.jsp">Teams</a>
                 </li>
                 <li class="nav-item">
                     <i class="fa fa-list" aria-hidden="true"></i>
-                    <a class="nav-link" href="users.html">Users</a>
+                    <a class="nav-link" href="users.jsp">Users</a>
                 </li>
             </ul>
         </div>
@@ -59,11 +62,11 @@
     <main>
         <h1 class="text-center mt-3">Add Team </h1>
         <div class="container-fluid center mt-4 ">
-            <form>
+            <form action="addteam" method="Post">
                 <div class="form-group center col-md-9  ml-5 ">
                     <label for="exampleInputText1">Name of team</label>
                     <input type="text" class="form-control" id="exampleInputText1" aria-describedby="textHelp"
-                        placeholder="Enter name of team" name="name_project">
+                        placeholder="Enter name of team" name="name">
                 </div>
                 <div class="form-group center col-md-9  ml-5 ">
                     <label for="exampleFormControlInput1">Invite members</label>

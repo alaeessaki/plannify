@@ -32,6 +32,12 @@ public class AuthServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String errorLogin = "Authentication error, check your email or password";
+		
+		HttpSession session = request.getSession();
+		session.invalidate(); 
+		request.setAttribute("error", errorLogin);
+		request.getRequestDispatcher("login.jsp").forward(request, response);
 		
 	}
 
@@ -44,9 +50,6 @@ public class AuthServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		
-		
-		out.println("testing the parameters  " + email + " " + password);
-		
 		try {
 			UserDAO udao = new UserDAO();		
 			User login = udao.getUser(email, password);
@@ -55,10 +58,10 @@ public class AuthServlet extends HttpServlet {
 				HttpSession session = request.getSession();
 				session.setAttribute("SessionUser", login);
 				
-				out.println("<h1> welcome "+ login.getNom() +" </h1>");
+				response.sendRedirect("projects");
 			
 			}else {
-				out.println("<h1> Login Error </h1>");
+				doGet(request, response);
 				
 			}			
 			

@@ -29,7 +29,7 @@
         <a href=""> <i class="fa fa-bell mb-3" aria-hidden="true"><span class="badge badge-dark">4</span></i></a>
         <a href=""> <i class="fa fa-info mb-3" aria-hidden="true"></i>
         </a>
-        <a href=""> <i class="fa fa-user mb-3" aria-hidden="true"></i>
+        <a href="logout"> <i class="fa fa-user mb-3" aria-hidden="true"></i>
         </a>
       </div>
     </div>
@@ -45,15 +45,15 @@
               </li>
               <li class="nav-item">
                   <i class="fa fa-folder" aria-hidden="true"></i>
-                  <a class="nav-link" href="index.html">projects</a>
+                  <a class="nav-link" href="projects">projects</a>
               </li>
               <li class="nav-item">
                   <i class="fa fa-users" aria-hidden="true"></i>
-                  <a class="nav-link" href="team.html">Teams</a>
+                  <a class="nav-link" href="team.jsp">Teams</a>
               </li>
               <li class="nav-item">
                   <i class="fa fa-list" aria-hidden="true"></i>
-                  <a class="nav-link" href="users.html">Users</a>
+                  <a class="nav-link" href="users.jsp">Users</a>
               </li>
           </ul>
       </div>

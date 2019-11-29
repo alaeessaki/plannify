@@ -48,7 +48,7 @@
                         <button type="submit" class="btn-validate">Confirm</button>
                     </div>
                     <div class="d-flex mt-3">
-                        <p>You already have an account ? </p> <a href="#" class="login-redirect ml-2">Login<i
+                        <p>You already have an account ? </p> <a href="login.jsp" class="login-redirect ml-2">Login<i
                                 class="fa pl-2 fa-arrow-right"></i> </a>
                     </div>
                 </form>

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import beans.Project;
+import beans.User;
 import models.ProjectDAO;
 import models.UserDAO;
 
@@ -37,8 +38,17 @@ public class ProjectController extends HttpServlet {
 		ArrayList<Project> projects = new ArrayList<Project>();
 		projects = projectDAO.getAllProjects();
 		
-		request.setAttribute("projects", projects);
-		this.getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+		HttpSession session = request.getSession();
+		if(session != null) {
+			User loggeduser = (User)session.getAttribute("SessionUser");
+			request.setAttribute("projects", projects);
+			request.setAttribute("user", loggeduser);
+			this.getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
+			
+		}else {
+			response.sendRedirect("login.jsp");
+		}
+		
 		
 		
 	}

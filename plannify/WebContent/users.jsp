@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,7 +30,7 @@
                             class="badge badge-dark">4</span></i></a>
                 <a href=""> <i class="fa fa-info mb-3" aria-hidden="true"></i>
                 </a>
-                <a href=""> <i class="fa fa-user mb-3" aria-hidden="true"></i>
+                <a href="logout"> <i class="fa fa-user mb-3" aria-hidden="true"></i>
                 </a>
             </div>
         </div>
@@ -42,15 +46,15 @@
                 </li>
                 <li class="nav-item">
                     <i class="fa fa-folder" aria-hidden="true"></i>
-                    <a class="nav-link" href="index.html">projects</a>
+                    <a class="nav-link" href="projects">projects</a>
                 </li>
                 <li class="nav-item">
                     <i class="fa fa-users" aria-hidden="true"></i>
-                    <a class="nav-link" href="team.html">Teams</a>
+                    <a class="nav-link" href="team.jsp">Teams</a>
                 </li>
                 <li class="nav-item">
                     <i class="fa fa-list" aria-hidden="true"></i>
-                    <a class="nav-link" href="users.html">Users</a>
+                    <a class="nav-link" href="#">Users</a>
                 </li>
             </ul>
         </div>
@@ -60,7 +64,7 @@
 
         <div class="title pl-3 d-flex flex-row justify-content-between ">
             <h1>Users</h1>
-            <a name="" id="" class="btn" href="#" role="button">add a User</a>
+            <a name="" id="" class="btn" href="#" role="button">Add a User</a>
         </div>
 
         <div class="d-flex flex-row p-3">
