@@ -1,0 +1,15 @@
+package com.alae.plannify.model;
+
+import javax.persistence.EntityListeners;
+import javax.persistence.MappedSuperclass;
+
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import lombok.Data;
+
+@MappedSuperclass
+@EntityListeners(AuditingEntityListener.class)
+@Data
+public class Audit {
+
+}

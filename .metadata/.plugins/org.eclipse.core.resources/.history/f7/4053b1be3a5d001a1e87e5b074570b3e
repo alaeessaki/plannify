@@ -1,0 +1,13 @@
+package com.alae.plannify.services;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.alae.plannify.dao.CategoryDaoInterface;
+
+@Service
+public class CategoryService {
+	
+	@Autowired
+	CategoryDaoInterface categoryDao;
+}

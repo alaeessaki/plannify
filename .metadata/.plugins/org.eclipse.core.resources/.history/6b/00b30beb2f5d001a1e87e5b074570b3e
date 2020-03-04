@@ -1,0 +1,8 @@
+package com.alae.plannify.model;
+
+import javax.persistence.Entity;
+
+@Entity
+public class Team extends Audit{
+
+}

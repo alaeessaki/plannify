@@ -1,0 +1,29 @@
+package com.alae.plannify.services;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.alae.plannify.dao.RoleDaoInterface;
+import com.alae.plannify.model.Role;
+
+@Service
+public class RoleService {
+
+	@Autowired
+	RoleDaoInterface roleDao;
+	
+	public Role add(Role role) {
+		return roleDao.save(role);
+	}
+	
+	public Optional<Role> get(int id){
+		return roleDao.findById(id);
+	}
+	
+	public List<Role> getAll(){
+		return roleDao.findAll();
+	}
+	
+}

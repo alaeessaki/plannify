@@ -1,0 +1,18 @@
+package com.alae.plannify.services;
+
+import java.util.List;
+import java.util.Optional;
+
+import com.alae.plannify.model.Category;
+
+public interface CategoryDaoInterface {
+
+	Category add(Category category);
+
+	Optional<Category> get(int id);
+
+	List<Category> getAll();
+
+	void delete(int id);
+
+}

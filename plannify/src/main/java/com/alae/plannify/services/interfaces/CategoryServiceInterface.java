@@ -1,0 +1,24 @@
+package com.alae.plannify.services.interfaces;
+
+import java.util.List;
+import java.util.Optional;
+
+import com.alae.plannify.model.Category;
+
+public interface CategoryServiceInterface {
+
+	Category add(Category category);
+
+	Optional<Category> get(int id);
+
+	List<Category> getAll();
+
+	void delete(int id);
+	
+	List<Category> findByParentIsNull();
+	
+	Optional<Category> findByLabel(String category_name);
+	
+	List<Category> findByParentIsNullAndEntrepriseId(int id);
+
+}

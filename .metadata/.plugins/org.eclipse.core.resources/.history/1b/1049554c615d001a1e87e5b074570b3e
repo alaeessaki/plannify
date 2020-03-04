@@ -1,0 +1,11 @@
+package com.alae.plannify.services;
+
+import org.springframework.stereotype.Service;
+
+import com.alae.plannify.dao.TeamDaoInterface;
+
+@Service
+public class TeamService {
+	
+	TeamDaoInterface teamDao;
+}

@@ -1,0 +1,5 @@
+package com.alae.plannify.exceptions;
+
+public class ApiExceptionHandler {
+
+}

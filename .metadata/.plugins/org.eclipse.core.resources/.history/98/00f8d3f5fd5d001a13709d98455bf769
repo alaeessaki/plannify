@@ -1,0 +1,11 @@
+package com.alae.plannify.controllers;
+
+import org.springframework.web.bind.annotation.RestController;
+
+import com.alae.plannify.services.interfaces.EntrepriseServiceInterface;
+
+@RestController
+public class EntrepriseController {
+
+	EntrepriseServiceInterface entrepriseService;
+}

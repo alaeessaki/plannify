@@ -1,0 +1,13 @@
+package com.alae.plannify.model;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "roles")
+public class Role extends Audit{
+	
+	private int id;
+	private String label:
+	
+}

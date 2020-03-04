@@ -1,0 +1,15 @@
+package com.alae.plannify.services;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.alae.plannify.dao.UserDaoInterface;
+
+@Service
+public class UserService {
+
+	@Autowired
+	UserDaoInterface userDao;
+	
+	
+}	

@@ -1,0 +1,5 @@
+package com.alae.plannify.services;
+
+public class RoleService {
+
+}

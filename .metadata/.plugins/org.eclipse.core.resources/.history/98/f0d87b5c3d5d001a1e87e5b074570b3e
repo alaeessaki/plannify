@@ -1,0 +1,36 @@
+package com.alae.plannify.services;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.alae.plannify.dao.CategoryDaoInterface;
+import com.alae.plannify.model.Category;
+
+@Service
+public class CategoryService  {
+	
+	@Autowired
+	CategoryDaoInterface categoryDao;
+	
+	public Category add(Category category) {
+		return categoryDao.save(category);
+	}
+	
+	
+	public Optional<Category> get(int id){
+		return categoryDao.findById(id);
+	}
+	
+	
+	public List<Category> getAll(){
+		return categoryDao.findAll();
+	}
+	
+	s
+	public void delete(int id) {
+		categoryDao.deleteById(id);
+	}
+}

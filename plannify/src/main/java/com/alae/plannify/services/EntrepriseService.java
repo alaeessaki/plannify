@@ -1,0 +1,39 @@
+package com.alae.plannify.services;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.alae.plannify.dao.EntrepriseDaoInterface;
+import com.alae.plannify.model.Entreprise;
+import com.alae.plannify.services.interfaces.EntrepriseServiceInterface;
+
+@Service
+public class EntrepriseService implements EntrepriseServiceInterface  {
+	
+	@Autowired
+	EntrepriseDaoInterface entrepriseDao;
+
+	@Override
+	public Entreprise add(Entreprise entreprise) {
+		return entrepriseDao.save(entreprise);
+	}
+	
+	@Override
+	public Optional<Entreprise> get(int id){
+		return entrepriseDao.findById(id);
+	}
+	
+	@Override
+	public List<Entreprise> getAll(){
+		return entrepriseDao.findAll();
+	}
+	
+	@Override
+	public void delete(int id) {
+		entrepriseDao.deleteById(id);
+	}
+	
+}

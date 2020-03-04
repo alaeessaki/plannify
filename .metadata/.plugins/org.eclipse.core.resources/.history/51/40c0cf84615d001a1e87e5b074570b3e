@@ -1,0 +1,34 @@
+package com.alae.plannify.services;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.alae.plannify.dao.TeamDaoInterface;
+import com.alae.plannify.model.Team;
+
+@Service
+public class TeamService {
+	
+	@Autowired
+	TeamDaoInterface teamDao;
+	
+	
+	public Team add(Team team) {
+		return teamDao.save(team);
+	}
+	
+	public Optional<Team> get(int id){
+		return teamDao.findById(id);
+	}
+	
+	public List<Team> getAll(){
+		return teamDao.findAll();
+	}
+	
+	public void delete(int id) {
+		
+	}
+}

@@ -1,0 +1,105 @@
+package com.alae.plannify.controllers;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.alae.plannify.exceptions.NotFoundException;
+import com.alae.plannify.model.Category;
+import com.alae.plannify.model.Entreprise;
+import com.alae.plannify.model.Role;
+import com.alae.plannify.model.Team;
+import com.alae.plannify.model.User;
+import com.alae.plannify.services.interfaces.EntrepriseServiceInterface;
+import com.alae.plannify.services.interfaces.UserServiceInterface;
+import com.github.javafaker.Faker;
+
+
+
+@RestController
+public class UserController {
+
+	@Autowired
+	UserServiceInterface userService;
+	
+	@Autowired
+	EntrepriseServiceInterface entrepriseService;
+	
+	@GetMapping("/api/users")
+	public ResponseEntity<List<User>> getAll(){
+		return ResponseEntity.ok(userService.getAll());
+	}
+	
+	@GetMapping("/api/users/{id}")
+	public ResponseEntity<User> get(@PathVariable("id")int id){
+		User user =  userService.get(id).orElseThrow(()->new NotFoundException("there is no user with this id"));
+		return ResponseEntity.ok(user);
+	}
+	
+	@GetMapping("/api/admin/users/seed")
+	public ResponseEntity<List<User>> seed(@RequestParam("num") int num, @RequestParam(required = false, name = "entreprise_id")Integer entreprise_id){
+		List<User> users = new ArrayList<User>();
+		Faker faker = new Faker();
+		Entreprise entreprise = null;
+
+		if(entreprise_id != null) {
+			entreprise = entrepriseService.get(entreprise_id.intValue()).orElseThrow(()->new NotFoundException("there is no entreprise with this id"));
+		}
+		else{
+			entreprise = new Entreprise();
+			List<Category> categories = new ArrayList<Category>();
+			List<Team> teams = new ArrayList<Team>();
+			
+			entreprise.setCategories(categories);
+			entreprise.setTeams(teams);
+			entreprise.setNom(faker.name().name());
+			entreprise.setDescription(faker.lorem().characters(40));
+			entreprise.setCreatedAt(new Date());
+			entreprise.setUpdatedAt(new Date());
+			
+			entrepriseService.add(entreprise);
+		}
+		
+		for(int i = 0; i < num; i++) {
+			User user = new User();
+			user.setNom(faker.name().firstName());
+			user.setPrenom(faker.name().lastName());
+			user.setUsername(faker.name().username());
+			user.setEmail(faker.lorem().characters(20));
+			user.setPassword(faker.lorem().characters(20));
+			user.setCreatedAt(new Date());
+			user.setUpdatedAt(new Date());
+			
+			List<Role> roles = new ArrayList<Role>();
+			List<Team> teams = new ArrayList<Team>();
+			user.setEntreprise(entreprise);
+			user.setRoles(roles);
+			user.setTeams(teams);
+			users.add(user);
+			user = null;
+			roles = null;
+			teams = null;
+		}
+		
+		userService.addMany(users);
+		return ResponseEntity.ok(users);
+	}
+	
+	
+	@DeleteMapping("/api/users/{id}")
+	public ResponseEntity<String> delete(@PathVariable("id")int id){
+		userService.get(id).orElseThrow(()->new NotFoundException("there is no user with this id"));
+		userService.delete(id);
+		return ResponseEntity.ok("user deleted successfully");
+	}
+	
+	
+}

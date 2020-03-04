@@ -1,0 +1,14 @@
+1583231269818	Rename package 'com.alae.plannify.service'
+1583232139100	Extract interface 'CategoryDaoInterface'
+1583232168386	Delete element
+1583232230411	Extract interface 'CategoryServiceInterface'
+1583232529335	Extract interface 'EntrepriseServiceInterface'
+1583232664039	Extract interface 'ProjectServiceInterface'
+1583232821299	Delete elements
+1583248579720	Extract interface 'CategoryServiceInterface'
+1583248594562	Extract interface 'EntrepriseServiceInterface'
+1583248608761	Extract interface 'ProjectServiceInterface'
+1583248624844	Extract interface 'RoleServiceInterface'
+1583248641907	Extract interface 'TeamServiceInterface'
+1583248658648	Extract interface 'UserServiceInterface'
+1583248670279	Move compilation units

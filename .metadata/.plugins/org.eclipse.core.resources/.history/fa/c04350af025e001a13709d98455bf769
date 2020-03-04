@@ -1,0 +1,30 @@
+package com.alae.plannify.controllers;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.alae.plannify.exceptions.NotFoundException;
+import com.alae.plannify.model.Category;
+import com.alae.plannify.model.Entreprise;
+import com.alae.plannify.services.interfaces.CategoryServiceInterface;
+import com.alae.plannify.services.interfaces.EntrepriseServiceInterface;
+
+@RestController
+public class CategoryController {
+
+	@Autowired
+	CategoryServiceInterface categoyService;
+	
+	@Autowired
+	EntrepriseServiceInterface entrepriseService;
+	
+	@GetMapping("api/categories")
+	public ResponseEntity<List<Category>> getAll(@RequestParam("entreprise") int entreprise_id){
+		Entreprise entreprise = entrepriseService.get(entreprise_id).orElseThrow(()->new NotFoundException("there is no entreprise with this id"));
+	}
+}

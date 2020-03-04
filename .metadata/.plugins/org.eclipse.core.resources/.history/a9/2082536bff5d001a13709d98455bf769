@@ -1,0 +1,36 @@
+package com.alae.plannify.model;
+
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+@Entity
+@Table(name = "categories")
+public class Category extends Audit{
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "category_id")
+	private int id;
+	
+	@NotBlank(message = "label cannot be null")
+	@Column(name = "label")
+	private String label;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "category")
+	private List<Project> projects;
+	
+	private Category parent;
+	
+	private List<Category> sub_categories;
+}	

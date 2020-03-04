@@ -1,0 +1,37 @@
+package com.alae.plannify.model;
+
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.validation.constraints.NotBlank;
+
+public class User extends Audit{
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "user_id")
+	private int id;
+	
+	@NotBlank(message = "username cannot be null")
+	@Column(name = "username")
+	private String username;
+	
+	@NotBlank(message = "email cannot be null")
+	@Column(name = "email")
+	private String email;
+	
+	@NotBlank(message = "password is required")
+	@Column(name = "password")
+	private String password;
+	
+	@NotBlank(message = "name cannot be null")
+	@Column(name="nom")
+	private String nom;
+	
+	@NotBlank(message = "prenom cannot be null")
+	@Column(name = "prenom")
+	private String prenom;
+	
+	
+}

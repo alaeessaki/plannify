@@ -1,0 +1,29 @@
+package com.alae.plannify.services;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.alae.plannify.dao.ProjectDaoInterface;
+import com.alae.plannify.model.Project;
+
+@Service
+public class ProjectService {
+
+	@Autowired
+	ProjectDaoInterface projectDao;
+
+	public Project add(Project project) {
+		return projectDao.save(project);
+	}
+	
+	public Optional<Project> get(int id){
+		return projectDao.findById(id);
+	}
+	
+	public List<Project> getAll(){
+		return projectDao.findAll();
+	}
+}
